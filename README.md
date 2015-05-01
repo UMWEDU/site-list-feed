@@ -45,7 +45,7 @@ The list of sites is structured as a flat array of indexed arrays. The output in
   ]
 ```
 
-The feed is available at /site-feed.json within your site. For example, if your site is located at http://www.exmaple.org/, the JSON feed will be available at http://www.example.org/site-feed.json.
+The feed is available at /feed/site-feed.json within your site. For example, if your site is located at http://www.example.org/, the JSON feed will be available at http://www.example.org/feed/site-feed.json.
 
 This plugin will not include any sites that have been marked as "Archived", "Spam", "Mature" or "Deleted" within the multisite installation. If you happen to have a system in place that offers more "Privacy" features for your sites (such as [Network Privacy](https://wordpress.org/plugins/network-privacy/)), only sites that are marked as public or hidden from search engines will be included (in other words, if a site is set to be available only to subscribers, it won't show up in the feed).
 
@@ -55,7 +55,7 @@ The list of sites is cached, by default, for 24 hours.
 
 1. Upload `site-list-feed.php` to the `/wp-content/mu-plugins/` directory
 1. Do not upload any of the other files within this plugin folder to your site
-1. Visit /site-feed.json on your site to load up the list of sites
+1. Visit /feed/site-feed.json on your site to load up the list of sites
 
 ## Frequently Asked Questions ##
 
@@ -70,6 +70,10 @@ There are a few possibilities:
 ### How do I adjust the length of time the feed is cached in the database? ###
 
 You can use the `ms-site-feed-list-transient-timeout` filter to change the amount of time the feed is cached. By default, the feed is cached for a `DAY_IN_SECONDS` (24 hours).
+
+### Why is my feed sending a 404 status code? ###
+
+If you attempt to visit your feed at /site-feed.json (e.g. http://example.org/site-feed.json), WordPress will send a 404 status code. Instead, you need to visit the feed at http://example.org/feed/site-feed.json.
 
 ## Changelog ##
 
