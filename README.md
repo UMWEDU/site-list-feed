@@ -24,7 +24,7 @@ This plugin retrieves a list of all sites registered in a WordPress Multisite in
 
 The list of sites is structured as a flat array of indexed arrays. The output includes the `blog_id`, the `domain`, the `path` and the value of the `public` parameter for each site. The output looks similar to (formatted below for easier readability; in reality, it will all be output on 1 line):
 
-`
+```php
   [
     {
       "blog_id":"1",
@@ -43,7 +43,7 @@ The list of sites is structured as a flat array of indexed arrays. The output in
       "public":"0"
     }
   ]
-`
+```
 
 The feed is available at /site-feed.json within your site. For example, if your site is located at http://www.exmaple.org/, the JSON feed will be available at http://www.example.org/site-feed.json.
 
