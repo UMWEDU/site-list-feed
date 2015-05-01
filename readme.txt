@@ -1,24 +1,16 @@
-# Multisite Site List Feed #
-**Contributors:** cgrymala
-
-**Donate link:** http://giving.umw.edu/
-
-**Tags:** multisite, network, site list, json
-
-**Requires at least:** 3.0.1
-
-**Tested up to:** 4.2.1
-
-**Stable tag:** 0.1
-
-**License:** GPLv2 or later
-
-**License URI:** http://www.gnu.org/licenses/gpl-2.0.html
-
+=== Multisite Site List Feed ===
+Contributors: cgrymala
+Donate link: http://giving.umw.edu/
+Tags: multisite, network, site list, json
+Requires at least: 3.0.1
+Tested up to: 4.2.1
+Stable tag: 0.1
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Outputs a JSON feed of all sites registered in a WordPress Multisite installation
 
-## Description ##
+== Description ==
 
 This plugin retrieves a list of all sites registered in a WordPress Multisite installation and outputs them as a JSON feed to be potentially consumed by other sites.
 
@@ -51,15 +43,15 @@ This plugin will not include any sites that have been marked as "Archived", "Spa
 
 The list of sites is cached, by default, for 24 hours.
 
-## Installation ##
+== Installation ==
 
 1. Upload `site-list-feed.php` to the `/wp-content/mu-plugins/` directory
 1. Do not upload any of the other files within this plugin folder to your site
 1. Visit /site-feed.json on your site to load up the list of sites
 
-## Frequently Asked Questions ##
+== Frequently Asked Questions ==
 
-### Why don't I see a new site I registered in the feed? ###
+= Why don't I see a new site I registered in the feed? =
 
 There are a few possibilities:
 
@@ -67,11 +59,11 @@ There are a few possibilities:
 1. The site has been marked as Archived, Spam, Deleted or Mature
 1. The feed may be cached; in this case, the updated list should appear within 24 hours, by default
 
-### How do I adjust the length of time the feed is cached in the database? ###
+= How do I adjust the length of time the feed is cached in the database? =
 
 You can use the `ms-site-feed-list-transient-timeout` filter to change the amount of time the feed is cached. By default, the feed is cached for a `DAY_IN_SECONDS` (24 hours).
 
-## Changelog ##
+== Changelog ==
 
-### 0.1 ###
+= 0.1 =
 * Initial version
