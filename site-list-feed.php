@@ -11,7 +11,7 @@
 if ( ! class_exists( 'Multisite_Site_Feed' ) ) {
 	class Multisite_Site_Feed {
 		var $version = '0.1';
-		var $dbversion = '2015-05-01/08:00:00';
+		var $dbversion = '2015-05-01/12:00:00';
 
 		/**
 		 * Construct our Multisite_Site_Feed object
@@ -24,6 +24,7 @@ if ( ! class_exists( 'Multisite_Site_Feed' ) ) {
 			$dbv = get_option( '_multisite_site_feed_db_version', false );
 
 			add_action( 'init', array( $this, 'add_feed' ) );
+			/*add_filter( 'status_header', array( $this, 'status_header' ), 99, 4 );*/
 
 			if ( $dbv != $this->dbversion ) {
 				add_action( 'init', array( $this, 'flush_rules' ) );
@@ -131,8 +132,17 @@ if ( ! class_exists( 'Multisite_Site_Feed' ) ) {
 		 * @return void
 		 */
 		function site_list() {
+			status_header( 200 );
+			header( 'Content-Type: application/javascript' );
 			echo $this->get_site_list();
 			die();
+		}
+		
+		/**
+		 * Attempt to override the fact that WordPress sets 404 as the status
+		 */
+		function status_header( $status, $code, $description, $protocol ) {
+			return "$protocol 200 OK";
 		}
 	}
 	/* End Class Definition */
