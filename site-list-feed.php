@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Multisite Site Feed
  * Description: Outputs a JSON list of all sites in a WordPress installation
- * Version: 0.1
+ * Version: 0.1.1
  * Author: cgrymala
  * Network: true
  * License: GPL2
@@ -10,8 +10,8 @@
 
 if ( ! class_exists( 'Multisite_Site_Feed' ) ) {
 	class Multisite_Site_Feed {
-		var $version = '0.1';
-		var $dbversion = '2015-05-01/12:00:00';
+		var $version = '0.1.1';
+		var $dbversion = '2015-06-29/11:00:00';
 
 		/**
 		 * Construct our Multisite_Site_Feed object
@@ -119,6 +119,9 @@ if ( ! class_exists( 'Multisite_Site_Feed' ) ) {
 
 			global $wpdb;
 			$sites = $wpdb->get_results( $wpdb->prepare( "SELECT blog_id, domain, path, public FROM {$wpdb->blogs} WHERE public >= %d AND archived=%d AND mature=%d AND spam=%d AND deleted=%d ORDER BY domain, path", 0, 0, 0, 0, 0 ) );
+			foreach ( $sites as $s ) {
+				$s->blogname = get_blog_option( $s->blog_id, 'blogname', '' );
+			}
 			$this->_set_transient( '_ms_site_feed_list', $sites );
 
 			return json_encode( $sites );
